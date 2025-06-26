@@ -1,0 +1,2 @@
+cryptography>=3.4.8
+pyinstaller>=5.0.0

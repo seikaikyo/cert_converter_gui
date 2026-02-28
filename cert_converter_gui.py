@@ -4,8 +4,6 @@
 Web服務憑證轉換工具 - GUI版本
 專為各種Web服務優化的憑證格式轉換，支援PFX到PEM的轉換
 
-作者：PDF Toolkit
-Email：noreply@example.com
 版本：2.0.0 GUI Edition
 
 功能特色：
@@ -35,7 +33,7 @@ class CertConverterGUI:
 
     def __init__(self, root):
         self.root = root
-        self.root.title("憑證轉換工具 v2.0.0 - by ")
+        self.root.title("憑證轉換工具 v2.0.0")
         self.root.geometry("1000x650")  # 改為更寬的窗口
         self.root.resizable(True, True)
 
@@ -236,8 +234,7 @@ class CertConverterGUI:
 ║  ╚═════╝╚══════╝╚═╝  ╚═╝   ╚═╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝  ╚═══╝      ║
 ║                                                                              ║
 ║                    🔐 Web服務憑證轉換工具 v2.0.0 GUI版 🔐                      ║
-║                     👨‍💻 作者：PDF Toolkit                                 ║
-║                     📧 Email：noreply@example.com                             ║
+║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
         """
 
@@ -543,7 +540,7 @@ class CertConverterGUI:
         footer_frame.columnconfigure(1, weight=1)
 
         # 版權資訊
-        copyright_text = "© 2025 PDF Toolkit | noreply@example.com"
+        copyright_text = "Certificate Converter v2.0.0"
         copyright_label = tk.Label(footer_frame,
                                    text=copyright_text,
                                    font=self.fonts['small'],
@@ -552,15 +549,6 @@ class CertConverterGUI:
         copyright_label.grid(row=0, column=0, sticky=tk.W)
 
         # 聯絡連結
-        email_label = tk.Label(footer_frame,
-                               text="📧 技術支援",
-                               font=self.fonts['small'],
-                               fg=self.colors['secondary'],
-                               bg=self.colors['background'],
-                               cursor="hand2")
-        email_label.grid(row=0, column=2, sticky=tk.E)
-        email_label.bind("<Button-1>",
-                         lambda e: webbrowser.open("mailto:noreply@example.com"))
 
     def setup_drag_drop(self):
         """設定拖放功能"""
@@ -851,8 +839,6 @@ class CertConverterGUI:
 ⚠️ 建議將私鑰檔案放在安全的目錄中
 
 ## 技術支援
-- 作者: PDF Toolkit
-- Email: noreply@example.com
 - 工具版本: 2.0.0 GUI版
 """
 
@@ -978,9 +964,8 @@ class CertConverterGUI:
 • 請妥善保管私鑰檔案
 • 建議設定適當的檔案權限（Linux/Mac: 600）
 
-👨‍💻 技術支援
-作者: PDF Toolkit
-Email: noreply@example.com
+技術支援
+請透過 GitHub Issues 回報問題
         """
 
         help_window = tk.Toplevel(self.root)

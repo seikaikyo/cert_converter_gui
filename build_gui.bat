@@ -1,7 +1,7 @@
 @echo off
 echo ========================================
 echo Certificate Converter GUI Builder
-echo By  (noreply@example.com)
+echo Certificate Converter GUI Builder
 echo ========================================
 echo.
 
@@ -133,7 +133,7 @@ REM Create GUI README
 echo Certificate Converter GUI Tool v2.0.0
 echo =====================================
 echo.
-echo Author:  ^(noreply@example.com^)
+echo.
 echo.
 echo FEATURES:
 echo - Beautiful graphical user interface
@@ -173,7 +173,7 @@ echo.
 echo TROUBLESHOOTING:
 echo - If the program doesn't start, try running as administrator
 echo - Make sure your antivirus doesn't block the executable
-echo - For technical support, contact: noreply@example.com
+echo - For technical support, open a GitHub Issue
 echo.
 echo VERSION HISTORY:
 echo v2.0.0 - GUI version with enhanced features
@@ -261,7 +261,7 @@ echo - Built-in help documentation
 echo - Automatic output folder management
 echo.
 echo Thank you for using Certificate Converter GUI!
-echo Contact: noreply@example.com
+echo.
 echo ========================================
 echo.
 pause

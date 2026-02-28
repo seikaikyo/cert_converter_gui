@@ -218,13 +218,8 @@ pyinstaller --onedir --windowed --name "CertConverter-GUI" cert_converter_gui.py
 - 錯誤訊息的完整日誌
 - 重現問題的步驟
 
-### 📬 聯絡方式
-- **📧 Email**：noreply@example.com
-- **👨‍💻 作者**：PDF Toolkit
-- **🌐 網站**：[專案首頁](#)
-
 ### 💡 功能建議
-歡迎提供功能改進建議：
+歡迎透過 GitHub Issues 提供功能改進建議：
 - 新的 Web 服務支援
 - 界面優化建議
 - 自動化功能需求
@@ -269,7 +264,7 @@ pyinstaller --onedir --windowed --name "CertConverter-GUI" cert_converter_gui.py
 ```
 MIT License
 
-Copyright (c) 2025 PDF Toolkit
+Copyright (c) 2025
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -296,7 +291,7 @@ SOFTWARE.
 
 **🔐 讓SSL憑證部署變得簡單！**
 
-Made with ❤️ by [PDF Toolkit](mailto:noreply@example.com)
+Made with ❤️
 
 [⬆ 回到頂部](#-憑證轉換工具-v200-gui版)
 

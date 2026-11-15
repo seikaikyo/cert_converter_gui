@@ -17,6 +17,8 @@ import tkinter as tk
 from tkinter import ttk, filedialog, messagebox, scrolledtext
 import tkinter.font as tkFont
 import os
+import re
+import subprocess
 import sys
 import threading
 import time
@@ -735,13 +737,10 @@ class CertConverterGUI:
 
     def sanitize_filename(self, filename):
         """清理檔案名稱"""
-        invalid_chars = ['<', '>', ':', '"', '/', '\\', '|', '?', '*']
-        for char in invalid_chars:
-            if char == '*':
-                filename = filename.replace(char, 'wildcard')
-            else:
-                filename = filename.replace(char, '_')
-        return filename.strip() or "certificate"
+        # 名稱來自憑證內容，只留英數與 . _ -，其餘一律換成底線
+        filename = filename.replace('*', 'wildcard')
+        filename = re.sub(r'[^A-Za-z0-9._-]', '_', filename).strip('.')
+        return filename or "certificate"
 
     def generate_certificate_files(self, pfx_content, domain):
         """生成憑證檔案"""
@@ -750,7 +749,7 @@ class CertConverterGUI:
 
         # 建立輸出目錄
         output_dir = f"{service_id}_{domain}"
-        Path(output_dir).mkdir(exist_ok=True)
+        Path(output_dir).mkdir(mode=0o700, exist_ok=True)
 
         # 生成私鑰和憑證
         private_key_pem = pfx_content['private_key'].private_bytes(
@@ -794,6 +793,9 @@ class CertConverterGUI:
                     cas=pfx_content['additional_certificates'],
                     encryption_algorithm=serialization.NoEncryption())
                 filepath.write_bytes(pfx_bytes)
+
+            if file_type in ('private_key', 'combined', 'pfx_output'):
+                os.chmod(filepath, 0o600)
 
             self.log_message(f"✅ 已生成: {filename}")
 
@@ -858,10 +860,14 @@ class CertConverterGUI:
         message = f"🎉 轉換完成！\n\n輸出目錄: {output_dir}\n\n是否要開啟輸出資料夾？"
 
         if messagebox.askyesno("轉換完成", message):
-            try:
-                os.startfile(output_dir)
-            except:
-                os.system(f'explorer "{os.path.abspath(output_dir)}"')
+            # 不經過 shell，路徑當成單一參數交給系統的開啟程式
+            target = os.path.abspath(output_dir)
+            if sys.platform == 'win32':
+                os.startfile(target)
+            elif sys.platform == 'darwin':
+                subprocess.run(['open', target], check=False)
+            else:
+                subprocess.run(['xdg-open', target], check=False)
 
     def show_error(self, error_message):
         """顯示錯誤訊息"""
